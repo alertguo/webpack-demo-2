@@ -13,4 +13,34 @@ module.exports = {
     template: 'src/assets/test.html'
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.styl$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {loader: 'stylus-loader',},
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader',],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('dart-sass'),
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
